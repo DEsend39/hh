@@ -1,0 +1,30 @@
+#include <iostream>
+#include <vector>
+
+std::vector<int> removeDuplicates2(std::vector<int> arr) {
+  std::vector<int> result;
+  std::vector<bool> seen(1000, false); // Достаточно для чисел от 0 до 999
+
+  for (int num : arr) {
+    if (!seen[num]) {
+      result.push_back(num);
+      seen[num] = true;
+    }
+  }
+  return result;
+}
+
+int main() {
+  std::vector<int> arr = {1, 2, 2, 3, 4, 4, 4, 5};
+  std::vector<int> result = removeDuplicates2(arr);
+
+  std::cout << "{";
+  for (size_t i = 0; i < result.size(); ++i) {
+    std::cout << result[i];
+    if (i < result.size() - 1) {
+      std::cout << ", ";
+    }
+  }
+  std::cout << "}" << std::endl;
+  return 0;
+}
