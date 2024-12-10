@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+std::vector<int> rearrange(std::vector<int> arr) {
+    int n = arr.size();
+    int j = 0; // Указатель на позицию для следующего положительного числа
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] >= 0) {
+            std::swap(arr[i], arr[j]);
+            j++;
+        }
+    }
+    return arr;
+}
+
+int main() {
+    std::vector<int> arr = {-12, 11, -13, -5, 6, -7, 5, -3, -8};
+    std::vector<int> result = rearrange(arr);
+
+    std::cout << "{";
+    for (size_t i = 0; i < result.size(); ++i) {
+        std::cout << result[i];
+        if (i < result.size() - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "}" << std::endl;
+    return 0;
+}
