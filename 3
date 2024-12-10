@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+
+std::vector<int> cyclicShift(std::vector<int> arr, int shift) {
+    int n = arr.size();
+    shift = shift % n; // Обработка сдвига больше размера массива
+    if (shift < 0) {
+        shift += n; // Обработка отрицательного сдвига
+    }
+
+    std::vector<int> shiftedArr(n);
+    for (int i = 0; i < n; ++i) {
+        shiftedArr[i] = arr[(i - shift + n) % n];
+    }
+    return shiftedArr;
+}
+
+int main() {
+    std::vector<int> arr = {1, 2, 3, 4, 5};
+    int shift = 2;
+    std::vector<int> result = cyclicShift(arr, shift);
+
+    std::cout << "{";
+    for (size_t i = 0; i < result.size(); ++i) {
+        std::cout << result[i];
+        if (i < result.size() - 1) {
+            std::cout << ", ";
+        }
+    }
+    std::cout << "}" << std::endl;
+    return 0;
+}
